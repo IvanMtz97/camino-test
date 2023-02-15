@@ -1,0 +1,23 @@
+.base-layout-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.base-layout-header {
+  width: 100vw;
+  height: 70px;
+  background-color: brown;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.base-layout-header-img {
+  width: 100px;
+  cursor: pointer;
+}
+
+.base-layout-content {
+  padding-left: 20px;
+}

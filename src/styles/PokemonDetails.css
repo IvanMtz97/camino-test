@@ -1,0 +1,9 @@
+.pokemon-details-container {
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+}
+
+.pokemon-details-container img {
+  width: 100px;
+}

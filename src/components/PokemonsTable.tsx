@@ -1,6 +1,7 @@
 import { useCallback } from "react";
+import { Link } from "react-router-dom";
 import { Pokemon } from "../types/pokemons.types";
-import "../styles/PokemonsTable.css";
+import "../styles/PokemonsTable.css";   
 
 interface PokemonsTableProps {
   pokemons: Pokemon[];
@@ -12,7 +13,7 @@ function PokemonsTable({ pokemons, loading }: PokemonsTableProps) {
   const renderPokemonRow = useCallback((pokemon: Pokemon, index: number) => {
     return (
       <tr key={pokemon.name}>
-        <td>{pokemon.name}</td>
+        <td><Link to={`pokemon/${pokemon.url.split('/')[6]}`}>{pokemon.name}</Link></td>
         <td>{pokemon.url}</td>
       </tr>
     )

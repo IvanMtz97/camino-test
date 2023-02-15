@@ -1,11 +1,17 @@
-import { GetPokemonsApiParams, GetPokemonsApiResponse } from "../types/pokemons.types";
+import { GetPokemonsApiParams, GetPokemonsApiResponse, PokemonDetails } from "../types/pokemons.types";
+const API_URL: string = (process.env.REACT_APP_API_URL as string);
 
 export async function getPokemons(params: GetPokemonsApiParams) {
-  let URL = 'https://pokeapi.co/api/v2/pokemon';
+  let URL = API_URL + 'pokemon';
 
   if (params) {
     URL += `?${Object.keys(params).map((paramKey) => `${paramKey}=${params[paramKey as keyof GetPokemonsApiParams]}`).join('&')}`;
   }
   const response = await fetch(URL);
   return await response.json() as GetPokemonsApiResponse;
+}
+
+export async function getPokemonById(id: number) {
+  const response = await fetch(API_URL + 'pokemon/' + id);
+  return await response.json() as PokemonDetails;
 }

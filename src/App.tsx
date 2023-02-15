@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 
 import './App.css';
+import BaseLayout from './Layouts/Base';
 import PokemonDetails from './views/PokemonDetails';
 import PokemonsList from './views/PokemonsList';
 
@@ -13,8 +14,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<PokemonsList />} />
-        <Route path="/pokemon/:id" element={<PokemonDetails />} />
+        <Route path="/" element={<BaseLayout><PokemonsList /></BaseLayout>} />
+        <Route path="/pokemon/:id" element={<BaseLayout><PokemonDetails /></BaseLayout>} />
       </Routes>
     </Router>
   );
