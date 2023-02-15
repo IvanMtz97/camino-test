@@ -1,0 +1,12 @@
+.pokemons-filter-container {
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+  justify-content: center;
+}
+
+.pokemons-filter-container input {
+  width: 143px;
+  margin-right: 10px;
+}

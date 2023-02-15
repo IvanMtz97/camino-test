@@ -29,7 +29,6 @@ function PokemonDetailsView() {
 
   if (error && !loading) return <span>Pokemon doesnt exists</span>;
 
-  console.log(pokemonData)
   return (
     <div className="pokemon-details-container">
       <img alt={pokemonData?.name + ""} src={pokemonData?.sprites.front_default + ""}/>

@@ -8,13 +8,13 @@ import {
 import './App.css';
 import BaseLayout from './Layouts/Base';
 import PokemonDetails from './views/PokemonDetails';
-import PokemonsList from './views/PokemonsList';
+import PokemonsView from './views/PokemonsView';
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<BaseLayout><PokemonsList /></BaseLayout>} />
+        <Route path="/" element={<BaseLayout><PokemonsView /></BaseLayout>} />
         <Route path="/pokemon/:id" element={<BaseLayout><PokemonDetails /></BaseLayout>} />
       </Routes>
     </Router>
