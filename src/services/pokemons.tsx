@@ -1,6 +1,11 @@
-import { GetPokemonsApiResponse } from "../types/pokemons.types";
+import { GetPokemonsApiParams, GetPokemonsApiResponse } from "../types/pokemons.types";
 
-export async function getPokemons() {
-  const response = await fetch('https://pokeapi.co/api/v2/pokemon?offset=20&limit=20');
+export async function getPokemons(params: GetPokemonsApiParams) {
+  let URL = 'https://pokeapi.co/api/v2/pokemon';
+
+  if (params) {
+    URL += `?${Object.keys(params).map((paramKey) => `${paramKey}=${params[paramKey as keyof GetPokemonsApiParams]}`).join('&')}`;
+  }
+  const response = await fetch(URL);
   return await response.json() as GetPokemonsApiResponse;
 }

@@ -1,19 +1,26 @@
-import { useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import PokemonsTable from "../components/PokemonsTable";
+import PokemonsTablePageSize from "../components/PokemonsTablePageSize";
 import usePokemons from "../hooks/usePokemons";
 import '../styles/PokemonsList.css';
 
 function PokemonsList() {
+  const [limit, setLimit] = useState(10);
   const {
     pokemons,
     arePokemonsLoading,
     error,
     fetchPokemons,
+    maxPokemons,
   } = usePokemons();
+
+  const handlePageSizeChange = useCallback((value: string) => {
+    setLimit(Number(value));
+  }, [setLimit]);
   
   useEffect(() => {
-    fetchPokemons();
-  }, [fetchPokemons]);
+    fetchPokemons({ limit });
+  }, [fetchPokemons, limit]);
 
   return (
     <div className="pokemons-list-container">
@@ -22,6 +29,13 @@ function PokemonsList() {
         loading={arePokemonsLoading}
         pokemons={pokemons}
       />
+      {(!arePokemonsLoading && pokemons.length > 0) && (
+        <PokemonsTablePageSize
+          currentSize={limit}
+          maxSize={maxPokemons}
+          onChange={handlePageSizeChange}
+        />
+      )}
     </div>
   );
 }

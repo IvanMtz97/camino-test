@@ -9,3 +9,8 @@ export interface GetPokemonsApiResponse {
   previous: string;
   results: Pokemon[];
 }
+
+export interface GetPokemonsApiParams {
+  limit?: number;
+  offset?: number;
+}

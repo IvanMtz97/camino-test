@@ -9,10 +9,9 @@ interface PokemonsTableProps {
 
 function PokemonsTable({ pokemons, loading }: PokemonsTableProps) {
   const tableIsEmpty = pokemons.length === 0 && !loading;
-  console.log('ps', pokemons);
   const renderPokemonRow = useCallback((pokemon: Pokemon, index: number) => {
     return (
-      <tr>
+      <tr key={pokemon.name}>
         <td>{pokemon.name}</td>
         <td>{pokemon.url}</td>
       </tr>
