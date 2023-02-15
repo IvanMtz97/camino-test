@@ -12,18 +12,23 @@ function PokemonsList({ pokemons, loading }: PokemonsListProps) {
   const listIsEmpty = pokemons.length === 0 && !loading;
   const renderPokemonRow = useCallback((pokemon: Pokemon, index: number) => {
     return (
-      <Link key={pokemon.name} className="pokemons-list-item" to={`pokemon/${pokemon.id || pokemon.url.split('/')[6]}`}>
+      <Link
+        data-testid="pokemon-link"
+        key={pokemon.name}
+        className="pokemons-list-item"
+        to={`pokemon/${pokemon.id || pokemon.url.split('/')[6]}`}
+      >
         {pokemon.name}
       </Link>
     )
   }, []);
   
   return (
-    <div className="pokemons-list-container">
-      {listIsEmpty && (<span>No results</span>)}
+    <div data-testid="pokemons-list-container" className="pokemons-list-container">
+      {listIsEmpty && (<span data-testid="no-results-span">No results</span>)}
       {pokemons.map(renderPokemonRow)}
       {pokemons.length === 0 && !loading}
-      {loading && <span>Loading pokemons...</span>}
+      {loading && <span data-testid="loading-pokemons-indicator">Loading pokemons...</span>}
     </div>
   )
 }

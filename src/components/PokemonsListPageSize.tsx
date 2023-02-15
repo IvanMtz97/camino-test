@@ -13,7 +13,7 @@ function PokemonsListPageSize({ currentSize, maxSize, onChange }: PokemonsListPa
   return (
     <div className="pokemons-list-page-size-container">
       <span>Showing: </span>
-      <select onChange={handleChange} defaultValue={currentSize + ""} name="pokemons-list-page-size-select">
+      <select data-testid="page-size-select" onChange={handleChange} defaultValue={currentSize + ""} name="pokemons-list-page-size-select">
         <option value="5">5</option>
         <option value="10">10</option>
         <option value="50">50</option>

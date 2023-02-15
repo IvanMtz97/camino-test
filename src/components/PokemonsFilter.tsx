@@ -20,12 +20,14 @@ function PokemonsFilter({ onNameChange, onIdChange, nameValue, idValue }: Pokemo
   return (
     <div className="pokemons-filter-container">
       <input
+        data-testid="name-filter-input"
         name="name-filter-input"
         placeholder="Filter by name"
         onChange={handleNameInputChange}
         value={nameValue}
       />
       <input
+        data-testid="id-filter-input"
         name="id-filter-input"
         placeholder="Filter by id"
         onChange={handleIdInputChange}
