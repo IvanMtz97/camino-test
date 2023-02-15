@@ -1,5 +1,7 @@
 import { useEffect } from "react";
+import PokemonsTable from "../components/PokemonsTable";
 import usePokemons from "../hooks/usePokemons";
+import '../styles/PokemonsList.css';
 
 function PokemonsList() {
   const {
@@ -14,8 +16,12 @@ function PokemonsList() {
   }, [fetchPokemons]);
 
   return (
-    <div>
-      <span>PokemonsList</span>
+    <div className="pokemons-list-container">
+      {error && <span>An error has occured</span>}
+      <PokemonsTable
+        loading={arePokemonsLoading}
+        pokemons={pokemons}
+      />
     </div>
   );
 }
