@@ -13,7 +13,7 @@ function PokemonsList({ pokemons, loading }: PokemonsListProps) {
   const renderPokemonRow = useCallback((pokemon: Pokemon, index: number) => {
     return (
       <Link
-        data-testid="pokemon-link"
+        data-testid={"pokemon-link-" + pokemon.id || pokemon.url.split('/')[6]}
         key={pokemon.name}
         className="pokemons-list-item"
         to={`pokemon/${pokemon.id || pokemon.url.split('/')[6]}`}

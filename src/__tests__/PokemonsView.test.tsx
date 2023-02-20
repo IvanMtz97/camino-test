@@ -75,18 +75,17 @@ test('Should call getPokemonById service with parameter 2 on id input change', a
   });
 });
 
-test('Should render no results label when filtering with "asdasd" name', async () => {
-  const getPokemonByNameSpy = jest.spyOn(PokemonsService, 'getPokemonByName');
+test('Should redirect to pokemon details when clicking pokemon', async () => {
+  const getPokemonsSpy = jest.spyOn(PokemonsService, 'getPokemons').mockImplementation(getPokemonsMock);
+  const pokemonId = 1;
   render(
     <BrowserRouter>
       <PokemonsView />
     </BrowserRouter>
   );
+  expect(getPokemonsSpy).toHaveBeenCalledWith({ limit: 10 });
   await waitFor(() => {
-    fireEvent.change(screen.getByTestId("name-filter-input"), {
-      target: { value: 'asdasd' }
-    });
-    expect(getPokemonByNameSpy).toHaveBeenCalledWith("asdasd");
-    expect(screen.getByTestId('no-results-span')).toBeInTheDocument();
+    fireEvent.click(screen.getByTestId('pokemon-link-' + pokemonId));
+    expect(window.location.pathname).toBe('/pokemon/' + pokemonId);
   });
 });
